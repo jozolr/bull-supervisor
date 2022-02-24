@@ -9,4 +9,9 @@ export class AppController {
   getHello() {
     return this.redisRepository.getJobs();
   }
+
+  @Get('crons')
+  getSalut() {
+    return this.redisRepository.getCrons();
+  }
 }

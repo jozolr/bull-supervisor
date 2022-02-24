@@ -1,32 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { AppService } from "./app.service";
-import { OidcSecurityService } from "angular-auth-oidc-client";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'bull-supervisor-front';
   jobs: Promise<any>;
+  crons: Promise<any>;
 
 
-  constructor (private appService: AppService, public oidcSecurityService: OidcSecurityService) {
+  constructor (private appService: AppService) {
     this.jobs = appService.getJobs();
-  }
-
-  ngOnInit() {
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken }) => {
-      /*...*/
-    });
-  }
-
-  login() {
-    this.oidcSecurityService.authorize();
-  }
-
-  logout() {
-    this.oidcSecurityService.logoff();
+    this.crons = appService.getCrons();
   }
 }

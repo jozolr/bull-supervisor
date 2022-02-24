@@ -1,5 +1,17 @@
 <div>
+  <h1>
+    Supervisor
+  </h1>
+  <h2>
+    Jobs
+  </h2>
   <div *ngFor="let job of jobs | async">
-    <span>{{job.id}}</span>
+    <span>{{job.id}} de type {{ job.data.type }} prévu le {{ job.data.date }}</span>
+  </div>
+  <h2>
+    Crons
+  </h2>
+  <div *ngFor="let cron of crons | async">
+    <span>{{cron.id}} est prévu avec la formule {{ cron.cron }}</span>
   </div>
 </div>

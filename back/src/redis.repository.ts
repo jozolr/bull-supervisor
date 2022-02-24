@@ -47,4 +47,8 @@ export class RedisRepository {
       'paused',
     ]);
   }
+
+  getCrons() {
+    return this.queue.getRepeatableJobs();
+  }
 }
